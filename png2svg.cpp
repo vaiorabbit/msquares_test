@@ -59,9 +59,9 @@ int main(int argc, char* argv[])
     {
         unsigned char* pixels_rev = (unsigned char*)malloc(sizeof(unsigned char) * img_width * img_height * 4);
         for (int r = img_height - 1; r >= 0; --r ) {
-            for (int c = img_width - 1; c >= 0; --c ) {
+            for (int c = 0; c < img_width; ++c ) {
                 unsigned int offset_org = 4 * (r * img_width + c);
-                unsigned int offset_rev = 4 * ((img_height - 1 - r) * img_width + (img_width - 1 - c));
+                unsigned int offset_rev = 4 * ((img_height - 1 - r) * img_width + c);
                 pixels_rev[offset_rev + 0] = pixels[offset_org + 0];
                 pixels_rev[offset_rev + 1] = pixels[offset_org + 1];
                 pixels_rev[offset_rev + 2] = pixels[offset_org + 2];
